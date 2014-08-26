@@ -92,6 +92,11 @@ GEM
     rails-assets-d3 (3.4.11)
     rails-assets-nvd3 (1.1.15.beta)
       rails-assets-d3 (~> 3.4.1)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.1.4)
       actionpack (= 4.1.4)
       activesupport (= 4.1.4)
@@ -147,6 +152,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails-assets-d3
   rails-assets-nvd3
+  rails_12factor
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
