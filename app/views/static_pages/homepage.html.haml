@@ -4,8 +4,28 @@
       Profit Break Even Graph
   .row
     .large-9.columns
-      #chart
-        %svg
+      .row
+        #chart
+          %svg
+
+      .row
+        .small-6.columns
+          .row.collapse
+            %label Profit Break Even Point
+            .small-9.columns
+              %input{ type: 'number', name: 'profit_break_even_point' }
+            .small-3.columns
+              %span.postfix
+                units/yr
+
+        .small-6.columns
+          .row.collapse
+            %label Total Time Required
+            .small-9.columns
+              %input{ type: 'number', name: 'total_time_required' }
+            .small-3.columns
+              %span.postfix
+                hr/yr
 
     .large-3.columns
       %form
@@ -38,9 +58,9 @@
           .small-2.columns
             %span.prefix
               $
-          .small-8.columns
+          .small-7.columns
             %input{ type: 'number', name: 'labour_cost', value: 10 }
-          .small-2.columns
+          .small-3.columns
             %span.postfix
               \/hr
 
@@ -49,19 +69,19 @@
           .small-2.columns
             %span.prefix
               $
-          .small-8.columns
+          .small-7.columns
             %input{ type: 'number', name: 'revenue', value: 1 }
-          .small-2.columns
+          .small-3.columns
             %span.postfix
               \/unit
 
         .row.collapse
           %label Service Life
-          .small-10.columns
+          .small-9.columns
             %input{ type: 'number', name: 'service_life', value: 7 }
-          .small-2.columns
+          .small-3.columns
             %span.postfix
-              \/yr
+              years
 
         .row.collapse
           %label Production Rate
@@ -157,12 +177,28 @@
     function uniformAnnualCost(machine_cost, maintenance_cost, salvage_value, rate_of_return, service_life) {
       var capital_return_factor = capitalReturnFactor(rate_of_return, service_life);
       var sinking_fund_factor = sinkingFundFactor(rate_of_return, service_life);
-      return ((machine_cost * capital_return_factor) + maintenance_cost - (5000 * sinking_fund_factor));
+      return ((machine_cost * capital_return_factor) + maintenance_cost - (salvage_value * sinking_fund_factor));
     }
 
     function uniformAnnualCostWithMachineOverhead(uniform_annual_cost, machine_overhead_rate) {
       machine_overhead_rate = machine_overhead_rate / 100;
       return (uniform_annual_cost * (1 + machine_overhead_rate));
+    }
+
+    function calculateRevenue(revenue, number_of_units) {
+      return (revenue * number_of_units);
+    }
+
+    function calculateCost(cost, variable_cost, number_of_units) {
+      return (cost + (number_of_units * variable_cost)).toFixed(2);
+    }
+
+    function setBreakEvenValues(revenue, cost, variable_cost, production_rate) {
+      units = (cost / (revenue - variable_cost));
+      time = (units / production_rate);
+      d3.select('input[name=profit_break_even_point]').property('value', units.toFixed(2));
+      d3.select('input[name=total_time_required]').property('value', time.toFixed(2));
+      return parseInt(units);
     }
 
     function generateLineData() {
@@ -183,11 +219,19 @@
 
       var revenueData = [];
       var costData = [];
+      var breakEvenUnits;
 
-      for (var i =0; i <= 1000; i++) {
-        var iScale = i * 100;
-        revenueData.push({ x: iScale, y: (revenue * iScale).toFixed(2) });
-        costData.push({ x: iScale, y: (uniform_annual_cost_with_overhead + (iScale * variable_cost_of_labour)).toFixed(2) });
+      breakEvenUnits = setBreakEvenValues(revenue, uniform_annual_cost_with_overhead, variable_cost_of_labour, production_rate);
+
+      for (var units = 0; units <= 1000; units++) {
+        var unitsScale = units * 100;
+        var revenuePoint = calculateRevenue(revenue, unitsScale);
+        var costPoint = calculateCost(uniform_annual_cost_with_overhead, variable_cost_of_labour, unitsScale)
+
+        revenueData.push({ x: unitsScale, y: revenuePoint });
+        costData.push({ x: unitsScale, y: costPoint });
+
+        if ((revenuePoint - 10000) > costPoint) break;
       }
 
       //Line chart data should be sent as an array of series objects.
