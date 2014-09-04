@@ -49,3 +49,13 @@ gem 'foundation-rails'
 gem 'compass-rails'
 gem 'rails-assets-nvd3'
 gem 'rails-assets-d3'
+gem 'simple_form'
+
+group :development, :test do
+  gem 'byebug'
+end
+
+group :test do
+  gem 'capybara', '~> 2.4.1'
+  gem 'launchy'
+end
