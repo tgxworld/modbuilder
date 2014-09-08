@@ -1,4 +1,8 @@
 class ChaptersController < ApplicationController
+  def show
+    render "chapters/#{params[:mod_id]}/#{params[:id].gsub('-', '_')}"
+  end
+
   def new
     @mod = Mod.find_by_slug(params[:mod_id])
     @chapter = Chapter.new
@@ -14,6 +18,10 @@ class ChaptersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def graphs
+    render "chapters/#{params[:mod_id]}/graphs/#{params[:name]}"
   end
 
   private
