@@ -3,5 +3,6 @@
     .small-12.columns
       %ul.no-bullet
         %li
-          = mod.name
-          = mod.code
+          = link_to mod_path(mod) do
+            = mod.name
+            = mod.code
