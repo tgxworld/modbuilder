@@ -3,6 +3,10 @@ class ModsController < ApplicationController
     @mods = Mod.all
   end
 
+  def show
+    @mod = Mod.find(params[:id])
+  end
+
   def new
     @mod = Mod.new
   end

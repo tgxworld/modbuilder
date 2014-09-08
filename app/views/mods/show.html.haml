@@ -1,0 +1,6 @@
+%h1.text-center
+  = @mod.name
+  = @mod.code
+
+- @mod.chapters.each do |chapter|
+  = chapter.name
