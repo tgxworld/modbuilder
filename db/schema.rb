@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140904084852) do
 
   create_table "chapters", force: true do |t|
     t.string   "name"
+    t.integer  "chapter_number"
     t.integer  "mod_id"
     t.datetime "created_at"
     t.datetime "updated_at"

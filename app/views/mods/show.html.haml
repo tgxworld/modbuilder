@@ -1,6 +1,10 @@
-%h1.text-center
-  = @mod.name
-  = @mod.code
+.small-12.large-8.large-centered.columns
+  %h1.text-center
+    = @mod.name
+    = @mod.code
 
-- @mod.chapters.each do |chapter|
-  = chapter.name
+  %ol
+    - @mod.chapters.each do |chapter|
+      %li
+        = link_to chapter.name, mod_chapter_path(@mod, chapter)
+

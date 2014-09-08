@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'mods#index'
 
-  resources :mods
+  resources :mods do
+    resources :chapters, except: [:index]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
