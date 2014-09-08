@@ -1,12 +1,12 @@
 class ChaptersController < ApplicationController
   def new
-    @mod = Mod.find(params[:mod_id])
+    @mod = Mod.find_by_slug(params[:mod_id])
     @chapter = Chapter.new
   end
 
   def create
     @chapter = Chapter.new(chapter_params)
-    @mod = Mod.find(params[:mod_id])
+    @mod = Mod.find_by_slug(params[:mod_id])
     @chapter.mod = @mod
 
     if @chapter.save

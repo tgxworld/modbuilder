@@ -8,3 +8,4 @@ mod:
   name: Automation
   code: ME1234
   description: This is a mod
+  slug: me1234

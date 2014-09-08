@@ -19,19 +19,24 @@ ActiveRecord::Schema.define(version: 20140904084852) do
   create_table "chapters", force: true do |t|
     t.string   "name"
     t.integer  "chapter_number"
+    t.string   "slug"
     t.integer  "mod_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "chapters", ["mod_id"], name: "index_chapters_on_mod_id", using: :btree
+  add_index "chapters", ["slug"], name: "index_chapters_on_slug", using: :btree
 
   create_table "mods", force: true do |t|
     t.string   "name"
     t.string   "code"
     t.text     "description"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "mods", ["slug"], name: "index_mods_on_slug", using: :btree
 
 end

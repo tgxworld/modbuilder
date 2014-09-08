@@ -4,7 +4,7 @@ class ModsController < ApplicationController
   end
 
   def show
-    @mod = Mod.find(params[:id])
+    @mod = Mod.find_by_slug(params[:id])
   end
 
   def new
