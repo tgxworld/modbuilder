@@ -115,6 +115,9 @@ GEM
       railties (= 4.1.4)
       sprockets-rails (~> 2.0)
     rails-assets-d3 (3.4.11)
+    rails-assets-jquery (2.1.1)
+    rails-assets-jquery-ui (1.11.1)
+      rails-assets-jquery (>= 1.6)
     rails-assets-nvd3 (1.1.15.beta)
       rails-assets-d3 (~> 3.4.1)
     rails_12factor (0.0.2)
@@ -187,6 +190,7 @@ DEPENDENCIES
   puma
   rails (= 4.1.4)
   rails-assets-d3
+  rails-assets-jquery-ui
   rails-assets-nvd3
   rails_12factor
   sass-rails (~> 4.0.3)
