@@ -21,6 +21,20 @@ class ModsController < ApplicationController
     end
   end
 
+  def edit
+    @mod = Mod.find_by_slug(params[:id])
+  end
+
+  def update
+    @mod = Mod.find_by_slug(params[:id])
+
+    if @mod.update_attributes(mod_params)
+      redirect_to mod_path(@mod)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def mod_params
