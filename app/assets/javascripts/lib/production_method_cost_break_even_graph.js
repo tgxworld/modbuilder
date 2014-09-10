@@ -52,51 +52,51 @@
     _generateLineData: function() {
       // Manual Method Calculation Start
       var revenue = parseInt(d3.select('input[name=revenue]').property('value'));
-      var labour_cost = parseInt(d3.select('input[name=labour_cost]').property('value'));
-      var machine_cost = parseInt(d3.select('input[name=machine_cost]').property('value'));
-      var maintenance_cost = parseInt(d3.select('input[name=maintenance_cost]').property('value'));
-      var salvage_value = parseInt(d3.select('input[name=salvage_value]').property('value'));
-      var service_life = parseInt(d3.select('input[name=service_life]').property('value'));
-      var production_rate = parseInt(d3.select('input[name=production_rate]').property('value'));
-      var machine_overhead_rate = parseInt(d3.select('input[name=machine_overhead_rate]').property('value'));
-      var labour_overhead = parseInt(d3.select('input[name=labour_overhead]').property('value'));
-      var rate_of_return = parseInt(d3.select('input[name=rate_of_return]').property('value'));
+      var labourCost = parseInt(d3.select('input[name=labour_cost]').property('value'));
+      var machineCost = parseInt(d3.select('input[name=machine_cost]').property('value'));
+      var maintenanceCost = parseInt(d3.select('input[name=maintenance_cost]').property('value'));
+      var salvageValue = parseInt(d3.select('input[name=salvage_value]').property('value'));
+      var serviceLife = parseInt(d3.select('input[name=service_life]').property('value'));
+      var productionRate = parseInt(d3.select('input[name=production_rate]').property('value'));
+      var machineOverheadRate = parseInt(d3.select('input[name=machine_overhead_rate]').property('value'));
+      var labourOverhead = parseInt(d3.select('input[name=labour_overhead]').property('value'));
+      var rateOfReturn = parseInt(d3.select('input[name=rate_of_return]').property('value'));
 
-      var variable_cost_of_labour = calculateVariableCostofLabour(labour_cost, labour_overhead, production_rate);
-      var uniform_annual_cost = calculateUniformAnnualCost(machine_cost, maintenance_cost, salvage_value, rate_of_return, service_life);
-      var uniform_annual_cost_with_overhead = calculateUniformAnnualCostWithMachineOverhead(uniform_annual_cost, machine_overhead_rate);
+      var variableCostOfLabour = calculateVariableCostofLabour(labourCost, labourOverhead, productionRate);
+      var uniformAnnualCost = calculateUniformAnnualCost(machineCost, maintenanceCost, salvageValue, rateOfReturn, serviceLife);
+      var uniformAnnualCostWithOverhead = calculateUniformAnnualCostWithMachineOverhead(uniformAnnualCost, machineOverheadRate);
       // Manual Method Calculation End
 
       // Automated Method Calculation Start
-      var auto_revenue = parseInt(d3.select('input[name=auto_revenue]').property('value'));
-      var auto_labour_cost = parseInt(d3.select('input[name=auto_labour_cost]').property('value'));
-      var auto_machine_cost = parseInt(d3.select('input[name=auto_machine_cost]').property('value'));
-      var auto_maintenance_cost = parseInt(d3.select('input[name=auto_maintenance_cost]').property('value'));
-      var auto_salvage_value = parseInt(d3.select('input[name=auto_salvage_value]').property('value'));
-      var auto_service_life = parseInt(d3.select('input[name=auto_service_life]').property('value'));
-      var auto_production_rate = parseInt(d3.select('input[name=auto_production_rate]').property('value'));
-      var auto_labour_overhead = parseInt(d3.select('input[name=auto_labour_overhead]').property('value'));
-      var auto_machine_overhead_rate = parseInt(d3.select('input[name=auto_machine_overhead_rate]').property('value'));
-      var auto_rate_of_return = parseInt(d3.select('input[name=auto_rate_of_return]').property('value'));
+      var autoRevenue = parseInt(d3.select('input[name=auto_revenue]').property('value'));
+      var autoLabourCost = parseInt(d3.select('input[name=auto_labour_cost]').property('value'));
+      var autoMachineCost = parseInt(d3.select('input[name=auto_machine_cost]').property('value'));
+      var autoMaintenanceCost = parseInt(d3.select('input[name=auto_maintenance_cost]').property('value'));
+      var autoSalvageValue = parseInt(d3.select('input[name=auto_salvage_value]').property('value'));
+      var autoServiceLife = parseInt(d3.select('input[name=auto_service_life]').property('value'));
+      var autoProductionRate = parseInt(d3.select('input[name=auto_production_rate]').property('value'));
+      var autoLabourOverhead = parseInt(d3.select('input[name=auto_labour_overhead]').property('value'));
+      var autoMachineOverheadRate = parseInt(d3.select('input[name=auto_machine_overhead_rate]').property('value'));
+      var autoRateOfReturn = parseInt(d3.select('input[name=auto_rate_of_return]').property('value'));
 
-      var variable_cost_of_machine = calculateVariableCostofLabour(auto_labour_cost, auto_labour_overhead, auto_production_rate);
-      var uniform_annual_cost_machine = calculateUniformAnnualCost(auto_machine_cost, auto_maintenance_cost, auto_salvage_value, auto_rate_of_return, auto_service_life);
-      var uniform_annual_cost_with_overhead_machine = calculateUniformAnnualCostWithMachineOverhead(uniform_annual_cost_machine, auto_machine_overhead_rate);
+      var variable_cost_of_machine = calculateVariableCostofLabour(autoLabourCost, autoLabourOverhead, autoProductionRate);
+      var uniformAnnualCost_machine = calculateUniformAnnualCost(autoMachineCost, autoMaintenanceCost, autoSalvageValue, autoRateOfReturn, autoServiceLife);
+      var uniformAnnualCostWithOverhead_machine = calculateUniformAnnualCostWithMachineOverhead(uniformAnnualCost_machine, autoMachineOverheadRate);
       // Automated Method Calculation End
 
       var revenueData = [];
       var manualCostData = [];
       var autoCostData = [];
 
-      this._setManualBreakEvenValues(revenue, uniform_annual_cost_with_overhead, variable_cost_of_labour, production_rate);
-      this._setAutoBreakEvenValues(auto_revenue, uniform_annual_cost_with_overhead_machine, variable_cost_of_machine, auto_production_rate);
-      this._setManualAutoBreakEvenValues(uniform_annual_cost_with_overhead, uniform_annual_cost_with_overhead_machine, variable_cost_of_labour, variable_cost_of_machine, production_rate, auto_production_rate);
+      this._setManualBreakEvenValues(revenue, uniformAnnualCostWithOverhead, variableCostOfLabour, productionRate);
+      this._setAutoBreakEvenValues(autoRevenue, uniformAnnualCostWithOverhead_machine, variable_cost_of_machine, autoProductionRate);
+      this._setManualAutoBreakEvenValues(uniformAnnualCostWithOverhead, uniformAnnualCostWithOverhead_machine, variableCostOfLabour, variable_cost_of_machine, productionRate, autoProductionRate);
 
       for (var units = 0; units <= 1000; units++) {
         var unitsScale = units * 100;
         var revenuePoint = calculateRevenue(revenue, unitsScale);
-        var manualCostPoint = calculateCost(uniform_annual_cost_with_overhead, variable_cost_of_labour, unitsScale);
-        var autoCostPoint = calculateCost(uniform_annual_cost_with_overhead_machine, variable_cost_of_machine, unitsScale);
+        var manualCostPoint = calculateCost(uniformAnnualCostWithOverhead, variableCostOfLabour, unitsScale);
+        var autoCostPoint = calculateCost(uniformAnnualCostWithOverhead_machine, variable_cost_of_machine, unitsScale);
 
         revenueData.push({ x: unitsScale, y: revenuePoint });
         manualCostData.push({ x: unitsScale, y: manualCostPoint });
@@ -125,24 +125,24 @@
       ];
     },
 
-    _setManualBreakEvenValues: function(revenue, cost, variable_cost, production_rate) {
+    _setManualBreakEvenValues: function(revenue, cost, variable_cost, productionRate) {
       units = (cost / (revenue - variable_cost));
-      time = (units / production_rate);
+      time = (units / productionRate);
       d3.select('input[name=profit_break_even_point]').property('value', units.toFixed(2));
       d3.select('input[name=total_time_required]').property('value', time.toFixed(2));
     },
 
-    _setAutoBreakEvenValues: function(revenue, cost, variable_cost, production_rate) {
+    _setAutoBreakEvenValues: function(revenue, cost, variable_cost, productionRate) {
       units = (cost / (revenue - variable_cost));
-      time = (units / production_rate);
+      time = (units / productionRate);
       d3.select('input[name=auto_profit_break_even_point]').property('value', units.toFixed(2));
       d3.select('input[name=auto_total_time_required]').property('value', time.toFixed(2));
     },
 
-    _setManualAutoBreakEvenValues: function(manual_cost, auto_cost, manual_variable_cost, auto_variable_cost, manual_production_rate, auto_production_rate) {
+    _setManualAutoBreakEvenValues: function(manual_cost, auto_cost, manual_variable_cost, auto_variable_cost, manualProductionRate, autoProductionRate) {
       units = (auto_cost - manual_cost) / (manual_variable_cost - auto_variable_cost);
-      manualTime = units / manual_production_rate;
-      autoTime = units / auto_production_rate;
+      manualTime = units / manualProductionRate;
+      autoTime = units / autoProductionRate;
       d3.select('input[name=break_even_point]').property('value', units.toFixed(2));
       d3.select('input[name=total_time_required_for_manual_method]').property('value', manualTime.toFixed(2));
       d3.select('input[name=total_time_required_for_auto_method]').property('value', autoTime.toFixed(2));
