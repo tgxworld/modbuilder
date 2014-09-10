@@ -2,6 +2,8 @@
   %h1.text-center
     = @mod.name
     = @mod.code
+    = image_tag @mod.avatar
+
 
   %ol
     - @mod.chapters.each do |chapter|

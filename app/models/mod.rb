@@ -1,4 +1,6 @@
 class Mod < ActiveRecord::Base
+  mount_uploader :avatar, ModAvatarImageUploader
+
   has_many :chapters
 
   validates :name, presence: true

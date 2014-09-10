@@ -6,5 +6,6 @@
       %ul.no-bullet
         %li
           = link_to mod_path(mod) do
+            = image_tag mod.avatar.thumb
             = mod.name
             = mod.code

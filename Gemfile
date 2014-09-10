@@ -50,6 +50,7 @@ gem 'rails-assets-d3'
 gem 'simple_form'
 gem 'carrierwave', '~> 0.10.0'
 gem 'fog'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug'
