@@ -48,6 +48,7 @@ gem 'compass-rails'
 gem 'rails-assets-nvd3'
 gem 'rails-assets-d3'
 gem 'simple_form'
+gem 'carrierwave', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug'
