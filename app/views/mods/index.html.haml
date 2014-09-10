@@ -5,7 +5,17 @@
     .small-12.columns
       %ul.no-bullet
         %li
-          = link_to mod_path(mod) do
-            = image_tag mod.avatar, class: 'mod-image-thumb'
-            = mod.name
-            = mod.code
+          .medium-4.columns
+            = link_to mod_path(mod) do
+              = image_tag mod.avatar, class: 'mod-image-thumb'
+
+          .medium-8.columns
+            %h4
+              = link_to mod.name, mod_path(mod)
+
+            %h5
+              Module Code:
+              = mod.code
+
+            %p
+              = mod.description
