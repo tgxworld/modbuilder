@@ -1,4 +1,4 @@
-function calculateVariableCostOfLabour(labour_cost, labour_overhead, production_rate) {
+function calculateVariableCostofLabour(labour_cost, labour_overhead, production_rate) {
   return (labour_cost * (100 + labour_overhead) / 100 / production_rate);
 }
 

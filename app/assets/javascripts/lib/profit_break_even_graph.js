@@ -61,15 +61,14 @@
       var labour_overhead = parseInt(d3.select('input[name=labour_overhead]').property('value'));
       var rate_of_return = parseInt(d3.select('input[name=rate_of_return]').property('value'));
 
-      var variable_cost_of_labour = calculateVariableCostOfLabour(labour_cost, labour_overhead, production_rate);
+      var variable_cost_of_labour = calculateVariableCostofLabour(labour_cost, labour_overhead, production_rate);
       var uniform_annual_cost = calculateUniformAnnualCost(machine_cost, maintenance_cost, salvage_value, rate_of_return, service_life);
       var uniform_annual_cost_with_overhead = calculateUniformAnnualCostWithMachineOverhead(uniform_annual_cost, machine_overhead_rate);
 
       var revenueData = [];
       var costData = [];
-      var breakEvenUnits;
 
-      breakEvenUnits = this._setBreakEvenValues(revenue, uniform_annual_cost_with_overhead, variable_cost_of_labour, production_rate);
+      this._setBreakEvenValues(revenue, uniform_annual_cost_with_overhead, variable_cost_of_labour, production_rate);
 
       for (var units = 0; units <= 1000; units++) {
         var unitsScale = units * 100;
@@ -102,7 +101,6 @@
       time = (units / production_rate);
       d3.select('input[name=profit_break_even_point]').property('value', units.toFixed(2));
       d3.select('input[name=total_time_required]').property('value', time.toFixed(2));
-      return parseInt(units);
     }
   }
 

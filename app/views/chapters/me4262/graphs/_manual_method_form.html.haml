@@ -1,0 +1,92 @@
+%form
+  %fieldset
+    %legend Manual Method
+
+    .row.collapse
+      %label Machine Cost
+      .small-2.columns
+        %span.prefix
+          $
+      .small-10.columns
+        %input{ type: 'number', name: 'machine_cost', value: 66063 }
+
+    .row.collapse
+      %label Salvage Value
+      .small-2.columns
+        %span.prefix
+          $
+      .small-10.columns
+        %input{ type: 'number', name: 'salvage_value', value: 5000 }
+
+    .row.collapse
+      %label Maintenance Cost
+      .small-2.columns
+        %span.prefix
+          $
+      .small-7.columns
+        %input{ type: 'number', name: 'maintenance_cost', value: 2000 }
+      .small-3.columns
+        %span.postfix
+          \/yr
+
+    .row.collapse
+      %label Labour Cost
+      .small-2.columns
+        %span.prefix
+          $
+      .small-7.columns
+        %input{ type: 'number', name: 'labour_cost', value: 10 }
+      .small-3.columns
+        %span.postfix
+          \/hr
+
+    .row.collapse
+      %label Revenue
+      .small-2.columns
+        %span.prefix
+          $
+      .small-7.columns
+        %input{ type: 'number', name: 'revenue', value: 1 }
+      .small-3.columns
+        %span.postfix
+          \/unit
+
+    .row.collapse
+      %label Service Life
+      .small-9.columns
+        %input{ type: 'number', name: 'service_life', value: 7 }
+      .small-3.columns
+        %span.postfix
+          years
+
+    .row.collapse
+      %label Production Rate
+      .small-8.columns
+        %input{ type: 'number', name: 'production_rate', value: 20 }
+      .small-4.columns
+        %span.postfix
+          units/hr
+
+    .row.collapse
+      %label Machine Overhead Rate
+      .small-10.columns
+        %input{ type: 'number', name: 'machine_overhead_rate', value: 15 }
+      .small-2.columns
+        %span.postfix
+          \%
+
+    .row.collapse
+      %label Labour Overhead
+      .small-10.columns
+        %input{ type: 'number', name: 'labour_overhead', value: 30 }
+      .small-2.columns
+        %span.postfix
+          \%
+
+    .row.collapse
+      %label Rate of Return
+      .small-10.columns
+        %input{ type: 'number', name: 'rate_of_return', value: 20 }
+      .small-2.columns
+        %span.postfix
+          \%

@@ -1,0 +1,92 @@
+%form
+  %fieldset
+    %legend Automated Method
+
+    .row.collapse
+      %label Machine Cost
+      .small-2.columns
+        %span.prefix
+          $
+      .small-10.columns
+        %input{ type: 'number', name: 'auto_machine_cost', value: 125000 }
+
+    .row.collapse
+      %label Salvage Value
+      .small-2.columns
+        %span.prefix
+          $
+      .small-10.columns
+        %input{ type: 'number', name: 'auto_salvage_value', value: 0 }
+
+    .row.collapse
+      %label Maintenance Cost
+      .small-2.columns
+        %span.prefix
+          $
+      .small-7.columns
+        %input{ type: 'number', name: 'auto_maintenance_cost', value: 5000 }
+      .small-3.columns
+        %span.postfix
+          \/yr
+
+    .row.collapse
+      %label Labour Cost
+      .small-2.columns
+        %span.prefix
+          $
+      .small-7.columns
+        %input{ type: 'number', name: 'auto_labour_cost', value: 4 }
+      .small-3.columns
+        %span.postfix
+          \/hr
+
+    .row.collapse
+      %label Revenue
+      .small-2.columns
+        %span.prefix
+          $
+      .small-7.columns
+        %input{ type: 'number', name: 'auto_revenue', value: 1 }
+      .small-3.columns
+        %span.postfix
+          \/unit
+
+    .row.collapse
+      %label Service Life
+      .small-9.columns
+        %input{ type: 'number', name: 'auto_service_life', value: 5 }
+      .small-3.columns
+        %span.postfix
+          years
+
+    .row.collapse
+      %label Production Rate
+      .small-8.columns
+        %input{ type: 'number', name: 'auto_production_rate', value: 50 }
+      .small-4.columns
+        %span.postfix
+          units/hr
+
+    .row.collapse
+      %label Machine Overhead Rate
+      .small-10.columns
+        %input{ type: 'number', name: 'auto_machine_overhead_rate', value: 15 }
+      .small-2.columns
+        %span.postfix
+          \%
+
+    .row.collapse
+      %label Labour Overhead
+      .small-10.columns
+        %input{ type: 'number', name: 'auto_labour_overhead', value: 30 }
+      .small-2.columns
+        %span.postfix
+          \%
+
+    .row.collapse
+      %label Rate of Return
+      .small-10.columns
+        %input{ type: 'number', name: 'auto_rate_of_return', value: 20 }
+      .small-2.columns
+        %span.postfix
+          \%
