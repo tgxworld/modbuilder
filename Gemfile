@@ -49,6 +49,7 @@ gem 'rails-assets-nvd3'
 gem 'rails-assets-d3'
 gem 'simple_form'
 gem 'carrierwave', '~> 0.10.0'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
